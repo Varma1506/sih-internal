@@ -17,8 +17,12 @@ const requestRoute = require('./routes/request')
 
 app.use(bodyParser.json())
 app.use(cors())
-
-app.use("/",requestRoute)
+app.get("/",(req,res)=>{
+    res.statusCode = 200;
+  res.setHeader('Content-Type', 'text/html');
+  res.end('<h1>Hello World</h1>');
+})
+app.use("/request",requestRoute)
 
 app.listen(3000,() =>{
     console.log("Server is running")
